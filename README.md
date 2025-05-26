@@ -36,7 +36,7 @@ Antes de começar, certifique-se de instalar os seguintes componentes:
 3. **Substituição de arquivos**
 
    * Substitua o arquivo `.grf` original do jogo pelo fornecido em:
-     `\res\grf\data-demo-1.grf`
+     `\res\grf\data-demo-1.grf` --> Muito grande para subir pro git, se chegar até aqui posso enviar via google drive
 
 4. **Inicialize o servidor de comandos**
 
