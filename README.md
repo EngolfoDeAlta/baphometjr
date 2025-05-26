@@ -14,7 +14,7 @@ Antes de começar, certifique-se de instalar os seguintes componentes:
 * [ACT Editor](https://rathena.org/board/files/file/3304-act-editor/)
 * [Resource Hacker](https://resource-hacker.br.download.it/)
 * [pyinterception](https://github.com/kennyhml/pyinterception)
-* [Interception Driver](https://github.com/oblitum/Interception)
+* [Interception Driver](https://github.com/oblitum/Interception) --> Esse é um driver customizado, é meio chato de instalar e precisa reiniciar depois. Boa sorte 
 
 ## Passo a passo para uso
 
