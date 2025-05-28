@@ -126,7 +126,7 @@ if (state = "CollectingLoot") {
 }
 
 if (state = "Walking") {
-    Teleport()
+    WalkRandomly()
     Sleep, 100
     state := "SearchingMonster"
     return
