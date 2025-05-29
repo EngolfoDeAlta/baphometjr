@@ -37,7 +37,7 @@ def main():
         else:
             print("Cor não encontrada.")
 
-        time.sleep(0.3)
+        time.sleep(0.2)
 
 if __name__ == "__main__":
     main()
