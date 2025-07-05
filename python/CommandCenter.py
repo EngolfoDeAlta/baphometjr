@@ -38,6 +38,18 @@ class SimpleHandler(BaseHTTPRequestHandler):
                 self.end_headers()
                 self.wfile.write(f"Erro: {str(e)}".encode())
 
+        elif parsed.path == "/click_only":
+            try:
+                interception.click(button="left")
+                print(f"Clique realizado na posição atual do mouse.")
+                self.send_response(200)
+                self.end_headers()
+                self.wfile.write(b"OK")
+            except Exception as e:
+                self.send_response(500)
+                self.end_headers()
+                self.wfile.write(f"Erro: {str(e)}".encode())
+
         elif parsed.path == "/press_key":
             try:
                 print("Requisição recebida em /press_key")

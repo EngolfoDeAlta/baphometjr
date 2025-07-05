@@ -12,22 +12,37 @@ F10::
 isRunning := !isRunning
 if (isRunning) {
     Log("Script iniciado.")
-    SetTimer, MainRoutine, 300000
+    SetTimer, MainRoutine, 180000          ; A cada 3 minutos (f4)
+    SetTimer, F6Routine, 2400000           ; A cada 40 minutos (f6)
+    SetTimer, F7Routine, 1800000           ; A cada 30 minutos (f7)
 } else {
     Log("Script pausado.")
     SetTimer, MainRoutine, Off
+    SetTimer, F6Routine, Off
 }
 return
 
 MainRoutine:
 {
-	Teleport()
+    Teleport("f4")
 }
 return
 
-Teleport() {
-    Log("Sending F4 key press to Python server.")
-    url := "http://127.0.0.1:8000/press_key?key=f4"
+F6Routine:
+{
+    Teleport("f6")
+}
+return
+
+F7Routine:
+{
+    Teleport("f7")
+}
+return
+
+Teleport(key) {
+    Log("Enviando tecla " . key . " para servidor Python.")
+    url := "http://127.0.0.1:8000/press_key?key=" . key
     RunWait, %ComSpec% /c curl -s "%url%", , Hide
 }
 
@@ -54,4 +69,3 @@ Join(delim, arr*) {
 
 GuiClose:
 ExitApp
-

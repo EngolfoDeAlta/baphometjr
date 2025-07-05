@@ -102,7 +102,12 @@ if (state = "Attacking") {
     }
     if (attackCheckCount = 0) {
         Log("Attacking monster at " . targetX . "," . targetY)
+	UseSkill()
         SendToPython_MoveAndClick(targetX + 10, targetY + 10)
+	Sleep, 1000
+
+	FindPixel(color1, newX, newY, screenWidth, screenHeight) || FindPixel(color2, x, y, screenWidth, screenHeight)
+	SendToPython_MoveAndClick(newX + 10, newY + 10)
         attackCheckCount := 1
         Sleep, 2000
         SetTimer, CheckAttack, 500
@@ -157,11 +162,11 @@ return
 
 CollectLoot() {
     global state, isRunning
-    lootColors := [0x21A300, 0x21A301, 0x22A502]
+    lootColors := [0x21A300, 0x21A301]
     screenWidth := 1920
     screenHeight := 1080
 
-    Loop, 3 {
+    Loop, 2 {
         color := lootColors[A_Index]
         if (FindPixel(color, lootX, lootY, screenWidth, screenHeight)) {
             Log("Loot pixel found at " . lootX . "," . lootY . " — clicking to interact.")
@@ -170,6 +175,12 @@ CollectLoot() {
         }
     }
     return false
+}
+
+UseSkill() {
+    Log("Sending F2 key press to Python server.")
+    url := "http://127.0.0.1:8000/press_key?key=f2"
+    RunWait, %ComSpec% /c curl -s "%url%", , Hide
 }
 
 Teleport() {
